@@ -1,0 +1,32 @@
+{
+  "name": "machinepack-weather",
+  "version": "1.0.0",
+  "description": "Communicate with a weather API to get weather forecasts.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/samhagman/machinepack-weather.git"
+  },
+  "scripts": {
+    "test": "node ./node_modules/test-machinepack-mocha/bin/testmachinepack-mocha.js"
+  },
+  "keywords": [
+    "weather",
+    "machines",
+    "machinepack"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "machine": "^9.0.0"
+  },
+  "devDependencies": {
+    "test-machinepack-mocha": "^2.0.0"
+  },
+  "machinepack": {
+    "friendlyName": "weather",
+    "machineDir": "machines/",
+    "machines": [
+      "get-current-weather"
+    ]
+  }
+}
