@@ -17,6 +17,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "babel": "^5.4.7",
     "machine": "^9.0.0"
   },
   "devDependencies": {
