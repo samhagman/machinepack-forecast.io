@@ -27,7 +27,8 @@
     "friendlyName": "weather",
     "machineDir": "machines/",
     "machines": [
-      "get-current-weather"
+      "get-current-weather",
+      "get-todays-forecast"
     ]
   }
 }

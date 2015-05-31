@@ -1,14 +1,14 @@
 module.exports = {
-    friendlyName:        'Get current weather',
-    description:         'Get the current weather at a location.',
+    friendlyName:        'Get todays weather',
+    description:         'Get the forecast for the current day.',
     extendedDescription: '',
     inputs:              {
-        lat:    {
+        lat: {
             example:     'tuneyards',
             description: 'The latitude of the location you are trying to forecast.',
             required:    true
         },
-        lng:    {
+        lng: {
             example:     '20.4030.20',
             description: 'The longitude of the location you are trying to forecast.',
             required:    true
@@ -30,10 +30,10 @@ module.exports = {
         noLatOrLong:      {
             description: 'You did not provide both a latitude and a longitude.'
         },
-        noAPIKey:         {
+        noAPIKey:      {
             description: 'You did not pass in a Forecast.io API key.'
         },
-        invalidAPIKey:    {
+        invalidAPIKey: {
             description: 'Your Forecast.io API key is not valid.'
         },
         success:          {
