@@ -54,7 +54,7 @@ module.exports = {
             try {
                 return new Promise(function(resolve) {
 
-                    request('https://api.forecast.io/forecast/ab8d5e6cec075c2ad8c2c474c10e9d0a/' + lat + ',' + lng, function(error, response, body) {
+                    request(`https://api.forecast.io/forecast/${inputs.apiKey}/${lat},${lng}`, function(error, response, body) {
                         if (!error && response.statusCode === 200) {
                             resolve(JSON.parse(body));
                         } else {
@@ -71,14 +71,14 @@ module.exports = {
         getWeather(inputs.lat, inputs.lng)
             .then(function(weather) {
                 return exits.success([ {
-                    view: swig.renderFile(__dirname + '/weather.html', {
+                    view: swig.renderFile('../weather-card.html', {
                         cards: [ {
-                            icon:        weather.currently.icon,
+                            icon:        weather.hourly.icon,
                             temperature: weather.currently.temperature,
-                            summary:     weather.currently.summary
+                            summary:     weather.hourly.summary
                         } ]
                     }),
-                    text: weather.currently.summary
+                    text: weather.hourly.summary
                 } ]);
             })
             .catch(function(err) {
