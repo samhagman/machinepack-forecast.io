@@ -1,58 +1,54 @@
 module.exports = {
-    friendlyName: 'Get today\'s weather',
-    description: 'Get the forecast for the current day.',
+    friendlyName:        'Get today\'s weather',
+    description:         'Get the forecast for the current day.',
     extendedDescription: '',
-    inputs: {
-        lat: {
-            example: '42.3507282',
+    inputs:              {
+        lat:        {
+            example:     '42.3507282',
             description: 'The latitude of the location you are trying to forecast.',
-            required: true
+            required:    true
         },
-        lng: {
-            example: '-71.13212709999999',
+        lng:        {
+            example:     '-71.13212709999999',
             description: 'The longitude of the location you are trying to forecast.',
-            required: true
+            required:    true
         },
-        apiKey: {
-            example: 'ab1d526c3c074c2a48c25476c19a9d0a',
+        apiKey:     {
+            example:     'ab1d526c3c074c2a48c25476c19a9d0a',
             description: 'This is your Forecast.io API Key.',
-            required: true
-        },
-        returnCard: {
-            example: true,
-            description: 'This is whether or not to return an HTML card representing the returned current weather',
-            required: false
+            required:    true
         }
     },
-    defaultExit: 'success',
-    exits: {
-        error: {
+    defaultExit:         'success',
+    exits:               {
+        error:            {
             description: 'Unexpected error occurred.'
         },
         invalidLatOrLong: {
             description: 'You have passed in an invalid latitude or longitude.'
         },
-        noLatOrLong: {
+        noLatOrLong:      {
             description: 'You did not provide both a latitude and a longitude.'
         },
-        noAPIKey: {
+        noAPIKey:         {
             description: 'You did not pass in a Forecast.io API key.'
         },
-        invalidAPIKey: {
+        invalidAPIKey:    {
             description: 'Your Forecast.io API key is not valid.'
         },
-        success: {
+        success:          {
             description: 'Returns a weather forecast.',
-            example: '{}'
+            example:     '{}'
         }
     },
-    fn: function(inputs, exits) {
+    fn:                  function(inputs, exits) {
 
         /* Dependencies */
         require('babel/register');
-        let swig = require('swig');
-        let request = require('request');
-        let Promise = require('bluebird');
+        const swig = require('swig');
+        const request = require('request');
+        const Promise = require('bluebird');
+        const moment = require('moment');
 
         function getWeather(lat, lng) {
 
@@ -78,20 +74,27 @@ module.exports = {
         getWeather(inputs.lat, inputs.lng)
             .then(function(weather) {
                 try {
-                    return exits.success([ {
-                        view: swig.renderFile('../weather-card.html', {
+                    var day = parseInt(moment().day());
+                    if (moment().hour() > 5) {
+                        day += 1;
+                    }
+                    var w = weather.daily.data[ day ];
+                    var t = 'Tomorrow, low of ' + w.temperatureMin + ' and high of ' + w.temperatureMax + '. ';
+                    return [ {
+                        view:    swig.renderFile(__dirname + '/weather.html', {
                             cards: [ {
-                                icon: weather.hourly.icon,
-                                temperature: weather.currently.temperature,
-                                summary: weather.hourly.summary
+                                icon:    w.icon,
+                                low:     w.temperatureMin,
+                                high:    w.temperatureMax,
+                                summary: w.summary
                             } ]
                         }),
-                        text: weather.hourly.summary,
+                        text:    t + w.summary,
                         weather: weather
-                    } ]);
+                    } ];
                 }
                 catch (e) {
-                    return exits.error(`An error occurred while building your response: ${e.message}`);
+                    return exits.error(`There was an error attempting to build the response. ${e.message}`);
                 }
             })
             .catch(function(e) {
