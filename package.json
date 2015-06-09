@@ -1,5 +1,5 @@
 {
-  "name": "machinepack-forecast.ioS",
+  "name": "machinepack-forecast.io",
   "version": "2.0.0",
   "description": "Communicate with the forecast.io API to get weather forecasts.",
   "repository": {
