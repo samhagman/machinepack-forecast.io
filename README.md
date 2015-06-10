@@ -5,6 +5,12 @@
 </h1>
 
 #### Communicate with the [forecast.io](https://developer.forecast.io) API to get weather forecasts.
+
+Note that this node module is written using ES6 features and needs to be run through a [preprocessor](https://babeljs.io)
+before the module can be run.  Hopefully Node will fully support ES6 in the near future and this step will be unnecessary.
+
+The version of this code distributed on the NPM registry has already been compiled into ES5 compatible code and can be
+safely installed from there.
  
 
 ## Installation &nbsp; [![NPM version](https://badge.fury.io/js/machinepack-forecast.io.svg)](http://badge.fury.io/js/machinepack-forecast.io)
