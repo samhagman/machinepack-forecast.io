@@ -4,8 +4,6 @@
   machinepack-forecast.io
 </h1>
 
-### [Docs](http://node-machine.org/machinepack-forecast.io) &nbsp; [Browse other machines](http://node-machine.org/machinepacks) &nbsp;  [FAQ](http://node-machine.org/implementing/FAQ)  &nbsp;  [Newsgroup](https://groups.google.com/forum/?hl=en#!forum/node-machine)
-
 #### Communicate with the [forecast.io](https://developer.forecast.io) API to get weather forecasts.
  
 
@@ -27,6 +25,8 @@ Documentation pages for the machines contained in this module (as well as all ot
 Learn more at <a href="http://node-machine.org/implementing/FAQ" title="Machine Project FAQ (for implementors)">http://node-machine.org/implementing/FAQ</a>.
 
 If you need more help, or find a bug, jump into [Gitter](https://gitter.im/node-machine/general) or leave a message in the project [newsgroup](https://groups.google.com/forum/?hl=en#!forum/node-machine).
+
+### [Docs](http://node-machine.org/machinepack-forecast.io) &nbsp; [Browse other machines](http://node-machine.org/machinepacks) &nbsp;  [FAQ](http://node-machine.org/implementing/FAQ)  &nbsp;  [Newsgroup](https://groups.google.com/forum/?hl=en#!forum/node-machine)
 
 ## License
 
