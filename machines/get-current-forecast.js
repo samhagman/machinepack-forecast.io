@@ -74,8 +74,6 @@ module.exports = {
 
                     const apiEndpoint = `https://api.forecast.io/forecast/${inputs.apiKey}/${lat},${lng}?${queryString}`;
 
-                    console.log(apiEndpoint);
-
                     request(apiEndpoint, (error, response, body) => {
                         if (!error && response.statusCode === 200) {
                             try {
@@ -180,7 +178,6 @@ module.exports = {
                 // Get the forecast from forecast.io
                 getCurrentForecast(inputs.lat, inputs.lng, stringifiedOptions)
                     .then(weather => {
-                        console.log(JSON.stringify(weather));
                         return exits.success(weather);
                     })
                     .catch(err => {
