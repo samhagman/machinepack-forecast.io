@@ -35,7 +35,6 @@ module.exports = {
         },
         options: {
             example: {
-                'callback': 'logResult',
                 'units': 'si',
                 'exclude': [ 'currently', 'minutely', 'hourly', 'daily', 'alerts', 'flags' ],
                 'extend': 'hourly',
